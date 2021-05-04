@@ -56,12 +56,11 @@ function App() {
     const query = messagesRef.orderBy('createdAt').limit(25);
 
     const [messages] = useCollectionData(query,{idField: 'id'});
-    var [formValue, setFormValue] = useState("");
+    const [ formValue, setFormValue] = useState("");
 
     const sendMessage = async(e) => {
       e.preventDefault();
-      const {uid, photoURL} = auth.currentUser;
-      console.log(formValue,uid,photoURL);
+      const { uid, photoURL } = auth.currentUser;
       await messagesRef.add({
         
         text: formValue,
@@ -78,10 +77,10 @@ function App() {
             {messages && messages.map(msg=><ChatMessage key={msg.id} message={msg}/>)}
         </div>
         <form onSubmit={sendMessage}>
-            <input onChange={(e) => {
+            <input value={formValue} onChange={(e) => {
                 setFormValue(e.target.Value)
                 console.log(e.target.value)
-                }} value={formValue} />
+              }}/>
             <button type="submit">Go</button>
         </form>
       </>
