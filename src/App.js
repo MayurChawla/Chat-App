@@ -27,6 +27,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <h2>{user? auth.currentUser.displayName:""}</h2>
+      {/* <h1>⚛️🔥💬</h1> */}
+        <SignOut />
+        
       </header>
       <section>
         {user?<ChatRoom/>:<SignIn/>}
@@ -47,12 +51,12 @@ function App() {
 
   function SignOut() {
     return auth.currentUser && (
-      <button onClick={()=>auth.SignOut()}>Sign Out</button>
+      <button onClick={()=>auth.signOut()}>Sign Out</button>
     )
   }
 
   function ChatRoom() {
-    const dummy = useRef()
+    const dummy = useRef();
 
     const [messageValue, setMessageValue] = useState("");
     const messagesRef = firestore.collection('messages');
@@ -60,7 +64,6 @@ function App() {
     //.limit(25)
 
     const [messages] = useCollectionData(query,{idField: 'id'});
-    
 
     const sendMessage = async (e) => {
       e.preventDefault();
@@ -79,7 +82,7 @@ function App() {
       <>
         <div>
             <div><h1>dummy</h1><h3>morte space</h3></div>
-            {messages && messages.map(msg=><ChatMessage key={msg.id} message={msg}/>)}
+            {messages && messages.map(msg=><ChatMessage key={msg.id} message={msg}/>)};
             <div ref={ dummy }><h1>dummy</h1><h3>morte space</h3></div>
         </div>
         <form onSubmit={sendMessage}>
@@ -93,7 +96,7 @@ function App() {
 
   function ChatMessage(props) {
     const {text, uid, photoURL} = props.message;
-    const messageClass = uid ===auth.currentUser.uid ? 'sent':'received';
+    const messageClass = uid === auth.currentUser.uid ? 'sent':'received';
     return (
       <div className={`message ${messageClass}`}>
         <img src={photoURL} alt=""></img>
