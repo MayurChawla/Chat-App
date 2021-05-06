@@ -95,6 +95,7 @@ function App() {
   }
 
   function ChatMessage(props) {
+    // eslint-disable-next-line react/prop-types
     const {text, uid, photoURL} = props.message;
     const messageClass = uid === auth.currentUser.uid ? 'sent':'received';
     return (
