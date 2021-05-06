@@ -23,25 +23,5 @@
     "eslint-config-google": "^0.14.0",
     "firebase-functions-test": "^0.2.0"
   },
-  "start": "npm run prod", 
-  "build": "npm-run-all clean transpile", 
-  "server": "node ./dist-server/bin/www", 
-  "dev": "NODE_ENV=development npm-run-all build server", 
-  "prod": "NODE_ENV=production npm-run-all build server", 
-  "transpile": "babel ./server --out-dir dist-server", 
-  "clean": "rimraf dist-server", 
-  "watch:dev": "nodemon", 
-  "test": "jest",
-  "nodemonConfig": {
-    "exec": "npm run dev",
-    "watch": [ "server/*", "public/*" ],
-    "ignore": [ "**/__tests__/**", "*.test.js", "*.spec.js" ] 
-  }, 
-  "babel": { 
-    "presets": [ "@babel/preset-env" ]
-  },
-  "jest": {
-    "testEnvironment": "node"
-  },
   "private": true
 }
