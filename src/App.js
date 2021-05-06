@@ -1,6 +1,5 @@
 import React, {useState, useRef} from 'react';
 import './App.css';
-
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -82,7 +81,7 @@ function App() {
       <>
         <div>
             <div><h1>dummy</h1><h3>morte space</h3></div>
-            {messages && messages.map(msg=><ChatMessage key={msg.id} message={msg}/>)};
+            {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
             <div ref={ dummy }><h1>dummy</h1><h3>morte space</h3></div>
         </div>
         <form onSubmit={sendMessage}>
@@ -94,9 +93,9 @@ function App() {
     )
   }
 
-  function ChatMessage(props) {
-    // eslint-disable-next-line react/prop-types
-    const {text, uid, photoURL} = props.message;
+  function ChatMessage(Prop) {
+    
+    const { text, uid, photoURL } = Prop.message;
     const messageClass = uid === auth.currentUser.uid ? 'sent':'received';
     return (
       <div className={`message ${messageClass}`}>
