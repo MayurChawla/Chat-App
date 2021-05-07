@@ -8,7 +8,12 @@ import {useAuthState} from 'react-firebase-hooks/auth';
 import {useCollectionData} from 'react-firebase-hooks/firestore';
 
 firebase.initializeApp({
-    
+  apiKey: "AIzaSyBiYGfg9oDagFnSri8RmGJRQ9WHhGoQ9lw",
+  authDomain: "firechat-d386e.firebaseapp.com",
+  projectId: "firechat-d386e",
+  storageBucket: "firechat-d386e.appspot.com",
+  messagingSenderId: "981451750877",
+  appId: "1:981451750877:web:9eb3df9f21eddf13a80a34"
 });
 
 const auth = firebase.auth();
@@ -22,7 +27,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h2>{user? auth.currentUser.displayName:""}</h2>
-      {/* <h1>⚛️🔥💬</h1> */}
         <SignOut />
         
       </header>
@@ -75,9 +79,9 @@ function App() {
     return(
       <>
         <div>
-            <div><h1>dummy</h1><h3>morte space</h3></div>
+            <div ><h1>&nbsp;</h1>&nbsp;</div>
             {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
-            <div ref={ dummy }><h1>dummy</h1><h3>morte space</h3></div>
+            <div ref={ dummy }><h1>&nbsp;</h1><h7>&nbsp;</h7></div>
         </div>
         <form onSubmit={sendMessage}>
             <input value={messageValue}
